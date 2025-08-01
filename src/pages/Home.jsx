@@ -36,12 +36,12 @@ const Home = () => {
           <button className="btn btn-success mx-2" onClick={handleCreateEvent}>
             ➕ Create Event
           </button>
-          <button
+          {/* <button
             className="btn btn-outline-primary mx-2"
             onClick={() => navigate("/volunteer")}
           >
             🙋‍♂️ Join as Volunteer
-          </button>
+          </button> */}
         </div>
       </div>
 
