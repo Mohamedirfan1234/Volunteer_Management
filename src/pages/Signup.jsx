@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../css/login.css"; // Reuse login styles for signup too
+import "../css/Login.css"; // Reuse login styles for signup too
 
 const Signup = () => {
   const [form, setForm] = useState({
