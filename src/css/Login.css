@@ -1,0 +1,159 @@
+/* login.css — Volunteer Management Stylish Auth UI */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e8f5e9, #ffffff);
+}
+
+.login-container {
+  max-width: 450px;
+  margin: 70px auto;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 128, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.login-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #66bb6a;
+  margin: 10px auto 0;
+  border-radius: 4px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f1f8e9;
+  transition: all 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: #43a047;
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(67, 160, 71, 0.3);
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #43a047;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #2e7d32;
+}
+
+.success-box,
+.error-box {
+  padding: 14px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Success Message */
+.success-box {
+  color: #1b5e20;
+  background-color: #d0f0c0;
+  border: 1px solid #a5d6a7;
+}
+
+/* Error Message */
+.error-box {
+  color: #b71c1c;
+  background-color: #ffcdd2;
+  border: 1px solid #ef9a9a;
+}
+
+/* Animation for success/error line */
+.animated-line-left,
+.animated-line-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-line-left::before,
+.animated-line-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 4px;
+  width: 100%;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.animated-line-left::before {
+  left: -100%;
+  background-color: #2e7d32;
+  animation-name: slideRight;
+}
+
+.animated-line-right::before {
+  right: -100%;
+  background-color: #c62828;
+  animation-name: slideLeft;
+}
+
+@keyframes slideRight {
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slideLeft {
+  to {
+    right: 0;
+  }
+}
+
+/* Fade-in animation for card */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 520px) {
+  .login-container {
+    margin: 30px 15px;
+    padding: 25px 20px;
+  }
+}
