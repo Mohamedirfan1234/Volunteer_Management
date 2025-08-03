@@ -157,3 +157,33 @@ body {
     padding: 25px 20px;
   }
 }
+/* Improved Responsive Design for Auth Forms */
+@media (max-width: 520px) {
+  .login-container {
+    margin: 18px 4vw;
+    padding: 18px 6vw;
+    max-width: 98vw;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .login-title {
+    font-size: 1.4rem;
+  }
+  .login-input,
+  .login-button {
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+  .success-box,
+  .error-box {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* Extra: Make sure inputs and buttons never overflow */
+.login-input,
+.login-button {
+  min-width: 0;
+  box-sizing: border-box;
+}
