@@ -11,7 +11,7 @@ export default function EventList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/events")
+      .get("https://volunteer-management-backend-7.onrender.com/api/events")
       .then((res) => setEvents(res.data))
       .catch((err) => console.error(err));
 
@@ -26,11 +26,14 @@ export default function EventList() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8080/api/events/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await axios.delete(
+        `"https://volunteer-management-backend-7.onrender.com/api/events"api/events/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       alert("Event deleted successfully");
 

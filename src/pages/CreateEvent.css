@@ -3,100 +3,122 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6;
 }
 
 .event-container {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 24px 18px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(33, 150, 83, 0.08);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f4f6;
 }
 
 .event-form {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .event-form h2 {
-  margin-bottom: 20px;
   text-align: center;
-  color: #333;
+  color: #2e7d32;
+  margin-bottom: 18px;
 }
 
 .event-form label {
   display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: #444;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #388e3c;
 }
 
 .event-form input,
 .event-form textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border 0.3s ease;
+  margin-bottom: 16px;
+  border: 1px solid #c8e6c9;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f1f8e9;
+  transition: border 0.2s, background 0.2s;
 }
 
 .event-form input:focus,
 .event-form textarea:focus {
-  border-color: #2563eb;
+  border-color: #43a047;
+  background: #fff;
   outline: none;
 }
 
 .event-form button {
-  margin-top: 20px;
   width: 100%;
   padding: 12px;
-  background-color: #2563eb;
-  color: white;
-  border: none;
+  background: #43a047;
+  color: #fff;
   font-weight: bold;
-  font-size: 16px;
-  border-radius: 6px;
+  border: none;
+  border-radius: 7px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s;
 }
 
 .event-form button:hover {
-  background-color: #1e40af;
+  background: #2e7d32;
 }
+
 .toast-success {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #28a745;
-  color: white;
-  padding: 12px 20px;
+  background: #d0f0c0;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: slideIn 0.5s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
+  padding: 14px 20px;
   font-weight: bold;
   z-index: 9999;
+  animation: fadeIn 0.5s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
 }
 
-@keyframes slideIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes fadeOut {
   to {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(20px);
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 520px) {
+  .event-container {
+    margin: 18px 4vw;
+    padding: 14px 4vw;
+    max-width: 98vw;
+  }
+
+  .event-form h2 {
+    font-size: 1.2rem;
+  }
+
+  .event-form button {
+    font-size: 0.98rem;
+    padding: 10px;
   }
 }
