@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../css/Login.css"; // Reuse login styles for signup too
 
 const Signup = () => {
@@ -7,12 +8,17 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
-    role: "USER",
+    role: "USER", // Default role for all users
   });
 
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [animationType, setAnimationType] = useState("");
+
+  const navigate = useNavigate();
+
+  // API URL - Update this to your Render deployment URL
+  const API_BASE_URL = "https://volunteer-management-backend-7.onrender.com";
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -25,11 +31,40 @@ const Signup = () => {
     setAnimationType("");
 
     try {
-      await axios.post("http://localhost:8080/api/auth/signup", form);
-      setSuccessMsg("✅ Registration successful!");
+      const response = await axios.post(
+        `${API_BASE_URL}/api/auth/signup`,
+        form
+      );
+
+      if (response.data.message) {
+        setSuccessMsg(response.data.message);
+      } else {
+        setSuccessMsg("✅ Registration successful!");
+      }
       setAnimationType("success");
+
+      // Clear form after successful registration
+      setForm({
+        name: "",
+        email: "",
+        password: "",
+        role: "USER",
+      });
+
+      // Redirect to login page after 2 seconds
+      setTimeout(() => {
+        // Pass signup success message to login page via URL params
+        navigate(
+          "/login?message=✅ Registration successful! Please login with your credentials."
+        );
+      }, 2000);
     } catch (err) {
-      setErrorMsg("❌ Registration failed!");
+      console.error("Signup error:", err);
+      if (err.response && err.response.data) {
+        setErrorMsg(err.response.data);
+      } else {
+        setErrorMsg("❌ Registration failed! Please try again.");
+      }
       setAnimationType("error");
     }
   };
@@ -51,6 +86,7 @@ const Signup = () => {
           type="text"
           name="name"
           placeholder="Name"
+          value={form.name}
           onChange={handleChange}
           required
         />
@@ -59,6 +95,7 @@ const Signup = () => {
           type="email"
           name="email"
           placeholder="Email"
+          value={form.email}
           onChange={handleChange}
           required
         />
@@ -67,19 +104,13 @@ const Signup = () => {
           type="password"
           name="password"
           placeholder="Password"
+          value={form.password}
           onChange={handleChange}
           required
         />
 
-        <select
-          name="role"
-          className="login-input"
-          onChange={handleChange}
-          required
-        >
-          <option value="USER">User</option>
-          <option value="ADMIN">Admin</option>
-        </select>
+        {/* Hidden input for role - always USER */}
+        <input type="hidden" name="role" value="USER" />
 
         <button className="login-button" type="submit">
           Register

@@ -6,7 +6,9 @@ export default function VolunteerListByEvent({ eventId }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/volunteers/event/${eventId}`)
+      .get(
+        `https://volunteer-management-backend-7.onrender.com/api/volunteers/event/${eventId}`
+      )
       .then((res) => {
         console.log("Fetched volunteers:", res.data);
         setVolunteers(res.data);

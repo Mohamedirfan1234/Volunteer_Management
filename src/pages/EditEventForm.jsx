@@ -14,14 +14,17 @@ export default function EditEventForm({ event, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/events/${event.id}`, {
-        title,
-        location,
-        date,
-        time,
-        capacity,
-        description,
-      });
+      await axios.put(
+        `https://volunteer-management-backend-7.onrender.com/api/events/${event.id}`,
+        {
+          title,
+          location,
+          date,
+          time,
+          capacity,
+          description,
+        }
+      );
 
       setSuccess(true); // ✅ trigger toast
       setTimeout(() => {

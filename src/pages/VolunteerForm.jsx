@@ -19,7 +19,7 @@ const VolunteerForm = () => {
       const userId = 1;
 
       const response = await axios.post(
-        "http://localhost:8080/api/volunteers/volunteer/register",
+        "https://volunteer-management-backend-7.onrender.com/api/volunteers/volunteer/register",
         {
           fullName,
           phone,

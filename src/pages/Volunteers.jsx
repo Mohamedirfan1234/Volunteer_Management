@@ -6,7 +6,9 @@ export default function Volunteers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/volunteers")
+      .get(
+        "https://volunteer-management-backend-7.onrender.com/api/volunteers"
+      )
       .then((res) => setVolunteers(res.data));
   }, []);
 

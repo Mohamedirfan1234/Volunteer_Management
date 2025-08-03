@@ -48,7 +48,7 @@ export default function EventList() {
   const handleEditClose = () => {
     setEditingEvent(null);
     axios
-      .get("http://localhost:8080/api/events")
+      .get("https://volunteer-management-backend-7.onrender.com/api/events")
       .then((res) => setEvents(res.data));
   };
 
